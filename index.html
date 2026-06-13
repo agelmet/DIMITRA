@@ -572,71 +572,32 @@
             background-color: var(--c-white);
         }
 
-        /* Elegant Space Gallery Strip with Arrows */
-        .gallery-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .gallery-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            background-color: rgba(251, 249, 246, 0.95);
-            color: var(--c-accent);
-            border: 1px solid rgba(184, 150, 110, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 1.4rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            font-family: var(--f-body);
-        }
-
-        .gallery-arrow:hover {
-            background-color: var(--c-accent);
-            color: var(--c-white);
-            border-color: var(--c-accent);
-        }
-
-        .prev-arrow { left: -22px; }
-        .next-arrow { right: -22px; }
-
-        .gallery-container {
-            display: flex;
+        /* Space Static Grid */
+        .space-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            overflow-x: auto;
-            padding: 1.5rem 0;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
             width: 100%;
         }
-        
-        .gallery-container::-webkit-scrollbar { display: none; }
 
-        .gallery-item {
-            flex: 0 0 320px;
+        .space-item {
+            width: 100%;
             height: 420px;
-            scroll-snap-align: center;
             overflow: hidden;
             border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .gallery-item img {
-            width: 100%; height: 100%;
+        .space-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 1.2s var(--ease-out-expo);
         }
-        
-        .gallery-item:hover img { transform: scale(1.05); }
+
+        .space-item:hover img {
+            transform: scale(1.05);
+        }
 
         /* Reviews Section */
         .reviews {
@@ -820,8 +781,8 @@
             }
             .about-image-wrapper::before { left: 0; right: auto; }
             
-            .prev-arrow { left: 10px; }
-            .next-arrow { right: 10px; }
+            /* Change space grid to 2 columns on tablet */
+            .space-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -889,6 +850,16 @@
             .services-header p {
                 margin: 0 0 2.5rem 0 !important; /* Overrides center margin auto */
                 font-size: 0.9rem !important;
+            }
+
+            /* Change space grid to single column on mobile */
+            .space-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .space-item {
+                height: 350px;
             }
 
             /* -------------------------------------
@@ -1054,13 +1025,16 @@
             <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Ο Χώρος</h2>
             <p style="margin-bottom: 2.5rem; max-width: 750px; color: var(--c-text-light); font-weight: 300; line-height: 1.7;">Ο χώρος των συνεδριών έχει σχεδιαστεί με φροντίδα ώστε να αποπνέει ηρεμία, ζεστασιά και ασφάλεια, προσφέροντας ένα περιβάλλον όπου μπορείτε να αισθανθείτε άνετα και ελεύθερα από την πρώτη στιγμή.</p>
             
-            <div class="gallery-wrapper">
-                <button class="gallery-arrow prev-arrow" aria-label="Προηγούμενη εικόνα">←</button>
-                <div class="gallery-container" id="space-gallery">
-                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy"></div>
-                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy"></div>
+            <div class="space-grid">
+                <div class="space-item reveal delay-1">
+                    <img src="https://github.com/agelmet/DIMITRA/blob/main/unnamed-38.jpg?raw=true" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy">
                 </div>
-                <button class="gallery-arrow next-arrow" aria-label="Επόμενη εικόνα">→</button>
+                <div class="space-item reveal delay-2">
+                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy">
+                </div>
+                <div class="space-item reveal delay-3">
+                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
@@ -1213,55 +1187,7 @@
 
             activeReveals.forEach(element => elementRevealObserver.observe(element));
 
-            // 5. Infinite Image Gallery Logic
-            const spaceGallery = document.getElementById('space-gallery');
-            const prevArrow = document.querySelector('.prev-arrow');
-            const nextArrow = document.querySelector('.next-arrow');
-            
-            if (spaceGallery && prevArrow && nextArrow) {
-                // Dynamically clone images to create an endless loop effect
-                const originalItems = Array.from(spaceGallery.children);
-                
-                // Clone the items multiple times to give plenty of "runway" before loop resets
-                for (let i = 0; i < 4; i++) {
-                    originalItems.forEach(item => {
-                        let clone = item.cloneNode(true);
-                        spaceGallery.appendChild(clone);
-                    });
-                }
-                
-                prevArrow.addEventListener('click', () => {
-                    const itemWidth = spaceGallery.children[0].offsetWidth + 24; // Width + grid gap
-                    if (spaceGallery.scrollLeft <= 10) {
-                        spaceGallery.scrollTo({ left: spaceGallery.scrollWidth, behavior: 'smooth' });
-                    } else {
-                        spaceGallery.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-                    }
-                });
-                
-                nextArrow.addEventListener('click', () => {
-                    const itemWidth = spaceGallery.children[0].offsetWidth + 24;
-                    const maxScroll = spaceGallery.scrollWidth - spaceGallery.clientWidth;
-                    
-                    if (spaceGallery.scrollLeft >= maxScroll - 10) {
-                        spaceGallery.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        spaceGallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
-                    }
-                });
-
-                // Auto reset if dragged natively to the absolute end
-                spaceGallery.addEventListener('scroll', () => {
-                    const maxScroll = spaceGallery.scrollWidth - spaceGallery.clientWidth;
-                    if (spaceGallery.scrollLeft >= maxScroll - 5) {
-                        spaceGallery.style.scrollSnapType = 'none';
-                        spaceGallery.scrollLeft = 0;
-                        setTimeout(() => spaceGallery.style.scrollSnapType = 'x mandatory', 50);
-                    }
-                }, { passive: true });
-            }
-
-            // 6. High-Performance Parallax Engine for Cinematic Hero Background
+            // 5. High-Performance Parallax Engine for Cinematic Hero Background
             const parallaxHeroAsset = document.getElementById('hero-parallax');
             
             const triggerParallaxShift = () => {
