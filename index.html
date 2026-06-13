@@ -492,7 +492,21 @@
             line-height: 1.7;
         }
 
-        /* Services Section */
+        /* Services Header Styling */
+        .services-header {
+            text-align: center;
+        }
+        .services-header h2 {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            margin-bottom: 0.8rem;
+        }
+        .services-header p {
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Services Section Grid */
         .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -862,22 +876,41 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center 30%;
-                transform: none !important; /* Force override javascript parallax */
+                transform: none !important; 
                 animation: none;
             }
             
-            /* Custom Hero Mobile CTA - Smaller & Shifted Right */
+            /* Custom Hero Mobile CTA - Smaller, Higher up, Aligned Right */
             .hero-cta-wrapper {
                 display: flex !important;
-                justify-content: center;
-                bottom: 2.5rem;
-                transform: translateX(15%); /* Moves the button specifically a bit to the right */
+                justify-content: flex-end; /* Align right */
+                padding-right: 1.5rem; /* Margin from right edge */
+                bottom: 4.5rem; /* Move higher up */
+                transform: none; /* Remove any translation */
             }
             .hero-cta-wrapper .btn {
-                font-size: 0.7rem !important;
-                padding: 0.7rem 1.4rem !important;
+                font-size: 0.6rem !important; /* Smaller text */
+                padding: 0.6rem 1.1rem !important; /* Smaller button shape */
             }
             
+            /* Make About section much closer to Hero */
+            #about {
+                padding-top: 1.5rem !important;
+            }
+            
+            /* Services Header - Left Aligned for Mobile */
+            .services-header {
+                text-align: left;
+            }
+            .services-header h2 {
+                font-size: 1.6rem !important;
+                margin-bottom: 0.5rem;
+            }
+            .services-header p {
+                margin: 0 0 2.5rem 0 !important; /* Overrides center margin auto */
+                font-size: 0.9rem !important;
+            }
+
             /* -------------------------------------
                GLOBAL MOBILE TEXT SCALING DOWN
                ------------------------------------- */
@@ -1013,9 +1046,9 @@
     <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
-            <div class="text-center reveal">
-                <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 0.8rem;">Υπηρεσίες</h2>
-                <p style="font-size: 1.05rem; max-width: 600px; margin: 0 auto 3rem;">Εξειδικευμένη προσέγγιση προσαρμοσμένη στις δικές σας ανάγκες.</p>
+            <div class="services-header reveal">
+                <h2>Υπηρεσίες</h2>
+                <p>Εξειδικευμένη προσέγγιση προσαρμοσμένη στις δικές σας ανάγκες.</p>
             </div>
             
             <div class="services-grid">
