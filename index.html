@@ -848,6 +848,11 @@
             .mobile-toggle.active span:nth-child(2) { opacity: 0; }
             .mobile-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
             
+            /* Hide Marquee in Mobile completely */
+            .marquee { 
+                display: none !important; 
+            }
+            
             /* Responsive True-to-Size Container for Hero Image */
             .hero {
                 height: 50vh;
@@ -860,24 +865,63 @@
                 transform: none !important; /* Force override javascript parallax */
                 animation: none;
             }
+            
+            /* Custom Hero Mobile CTA - Smaller & Shifted Right */
             .hero-cta-wrapper {
-                display: block; /* Show CTA only on mobile */
+                display: flex !important;
+                justify-content: center;
                 bottom: 2.5rem;
+                transform: translateX(15%); /* Moves the button specifically a bit to the right */
+            }
+            .hero-cta-wrapper .btn {
+                font-size: 0.7rem !important;
+                padding: 0.7rem 1.4rem !important;
             }
             
-            /* Compact Mobile Marquee Banner Styling */
-            .marquee { padding: 0.8rem 0; }
-            .marquee span {
-                font-size: 0.85rem;
-                padding: 0 1.5rem;
-                letter-spacing: 0.1em;
+            /* -------------------------------------
+               GLOBAL MOBILE TEXT SCALING DOWN
+               ------------------------------------- */
+            body { font-size: 0.9rem; }
+            
+            p, .lead, .review-text, .info-block p, .about-text-part-1 p, .about-text-part-2 p { 
+                font-size: 0.9rem !important; 
+                line-height: 1.55;
             }
             
-            /* Make Philosophy Heading Smaller in Mobile */
-            .philosophy h2 {
-                font-size: 1.45rem;
-                line-height: 1.35;
-                margin-bottom: 1rem;
+            h2, .about-grid h2, .philosophy h2, .contact-info h2 {
+                font-size: 1.6rem !important;
+                line-height: 1.3;
+            }
+            
+            h3, .service-card h3, .phil-card h3 {
+                font-size: 1.35rem !important;
+            }
+            
+            .about-grid h3.sub {
+                font-size: 1rem !important;
+                margin-bottom: 1.2rem;
+            }
+            
+            .tag {
+                font-size: 0.7rem !important;
+                padding: 0.35rem 0.8rem !important;
+            }
+            
+            .btn {
+                font-size: 0.75rem !important;
+                padding: 0.8rem 1.8rem !important;
+            }
+            
+            .info-block h4 {
+                font-size: 0.75rem !important;
+            }
+            
+            .swipe-indicator {
+                font-size: 0.75rem !important;
+            }
+            
+            footer {
+                font-size: 0.75rem !important;
             }
             
             .service-card { padding: 2.5rem 1.8rem; }
@@ -1048,8 +1092,7 @@
     <!-- Reviews Section -->
     <section class="section reviews" id="reviews">
         <div class="container reveal">
-            <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 0.5rem;">Εμπειρίες Θεραπευόμενων</h2>
-            <p style="margin-bottom: 2rem;">Αυθεντικές μαρτυρίες από την πλατφόρμα Doctoranytime.</p>
+            <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 1.5rem;">Εμπειρίες Θεραπευόμενων</h2>
             
             <div class="swipe-indicator">
                 <span>←</span> Σύρετε για να διαβάσετε <span>→</span>
