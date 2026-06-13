@@ -55,7 +55,7 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             line-height: 1.6;
-            font-size: 1rem; /* Reduced from 1.125rem */
+            font-size: 1rem;
             position: relative;
         }
 
@@ -234,7 +234,10 @@
 
         .loader-logo {
             width: 100px;
-            border-radius: 4px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
             opacity: 0;
             transform: translateY(20px);
             animation: loaderReveal 1.5s var(--ease-out-expo) forwards;
@@ -290,8 +293,11 @@
         }
 
         .logo img {
+            width: 45px;
             height: 45px;
-            border-radius: 4px;
+            border-radius: 50%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
             transition: transform 0.4s ease;
         }
         
@@ -408,7 +414,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* About / Profile Section (Moved right after Hero/Marquee) */
+        /* About / Profile Section */
         .about-image-wrapper {
             position: relative;
             padding: 2rem 2rem 0 0;
@@ -801,6 +807,28 @@
             .mobile-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .mobile-toggle.active span:nth-child(2) { opacity: 0; }
             .mobile-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            /* Responsive True-to-Size Zoom Out for Hero Asset */
+            .hero {
+                height: 50vh;
+                min-height: 350px;
+            }
+            .hero-bg {
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center top;
+                transform: none;
+                animation: none;
+                opacity: 0.95;
+            }
+            
+            /* Compact Mobile Marquee Banner Styling */
+            .marquee span {
+                font-size: 0.8rem;
+                padding: 0 0.8rem;
+                letter-spacing: 0.08em;
+            }
+            
             .service-card { padding: 2.5rem 1.8rem; }
             .review-card { padding: 2.5rem 1.5rem; }
             .review-card::before { left: 1rem; font-size: 4rem; }
@@ -857,7 +885,7 @@
         </div>
     </div>
 
-    <!-- About / Profile Section (Moved right after Hero/Marquee) -->
+    <!-- About / Profile Section -->
     <section class="section" id="about">
         <div class="container grid-2">
             <div class="about-image-wrapper reveal reveal-scale">
@@ -902,7 +930,7 @@
                 <!-- Forensic Block -->
                 <div class="service-card reveal reveal-scale delay-1">
                     <h3>Δικαστική Ψυχολογία &<br>Πραγματογνωμοσύνες</h3>
-                    <p>Ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας και με πολυετή θητεία ως πραγματογνώμονας στις Εισαγγελικές αρχές, αναλαμβάνω τη σύνταξη δικαστικών πραγματογνωμοσυνών και τη συμβουλευτική σε νομικά θέματα που απαιτούν εξειδικευμένη ψυχολογική εκτίμηση. Η υπηρεσία αυτή διέπεται από απόλυτη αντικειμενικότητα, αυστηρή τήρηση των νομικών πλαισίων και επιστημονική τεκμηρίωση για κάθε υπόθεση που χρήζει δικαστικής παρέμβασης.</p>
+                    <p>Ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας and με πολυετή θητεία ως πραγματογνώμονας στις Εισαγγελικές αρχές, αναλαμβάνω τη σύνταξη δικαστικών πραγματογνωμοσυνών και τη συμβουλευτική σε νομικά θέματα που απαιτούν εξειδικευμένη ψυχολογική εκτίμηση. Η υπηρεσία αυτή διέπεται από απόλυτη αντικειμενικότητα, αυστηρή τήρηση των νομικών πλαισίων και επιστημονική τεκμηρίωση για κάθε υπόθεση που χρήζει δικαστικής παρέμβασης.</p>
                     <div class="service-tags">
                         <span class="tag">Δικαστική ψυχολογία</span>
                         <span class="tag">Σύνταξη Πραγματογνωμοσυνών</span>
@@ -940,9 +968,10 @@
     </section>
 
     <!-- Space Gallery Strip -->
-    <section class="section" style="padding-top: 0;">
+    <section class="section" style="padding-top: clamp(4rem, 10vw, 8rem);">
         <div class="container reveal">
-            <h2 style="margin-bottom: 2rem; font-size: 1.8rem;">Ο Χώρος</h2>
+            <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Ο Χώρος</h2>
+            <p style="margin-bottom: 2.5rem; max-width: 750px; color: var(--c-text-light); font-weight: 300; line-height: 1.7;">Ο χώρος των συνεδριών έχει σχεδιαστεί με φροντίδα ώστε να αποπνέει ηρεμία, ζεστασιά και ασφάλεια, προσφέροντας ένα περιβάλλον όπου μπορείτε να αισθανθείτε άνετα και ελεύθερα από την πρώτη στιγμή.</p>
             <div class="gallery-container">
                 <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-38.jpg" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy"></div>
                 <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-39.jpg" alt="Χώρος Συνεδριών" loading="lazy"></div>
@@ -961,7 +990,7 @@
             <p style="margin-bottom: 2rem;">Αυθεντικές μαρτυρίες από την πλατφόρμα Doctoranytime.</p>
             
             <div class="swipe-indicator">
-                <span>&larr;</span> Σύρετε για να διαβάσετε <span>&rarr;</span>
+                <span>←</span> Σύρετε για να διαβάσετε <span>→</span>
             </div>
             
             <div class="review-slider">
@@ -1027,11 +1056,11 @@
                     </div>
                 </div>
                 
-                <!-- Live Functional Google Maps Integration -->
+                <!-- Live Functional Google Maps Embed -->
                 <div class="reveal delay-1">
                     <div class="map-wrapper">
                         <iframe 
-                            src="https://maps.google.com/maps?q=Θέμιδος%204,%20Μαρούσι&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            src="https://maps.google.com/maps?q=%CE%98%CE%AD%CE%BC%CE%B9%CE%B4%CE%BF%CF%82%204%2C%20%CE%9C%CE%B1%CF%81%CE%BF%CF%8D%CF%83%CE%B9&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
@@ -1055,7 +1084,7 @@
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.transform = 'translateY(-100%)';
-            }, 2200); // Slightly longer to allow reading the subtitle
+            }, 2200);
 
             // 2. Automated Copyright Timestamp
             document.getElementById('year').textContent = new Date().getFullYear();
