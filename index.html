@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="el" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σμαράγδα Δημητρά | Συνθετική Ψυχοθεραπεία & Δικαστική Ψυχολογία</title>
+    <meta name="description" content="Η Σμαράγδα Δημητρά είναι Ψυχολόγος, Συστημική και Προσωποκεντρική Ψυχοθεραπεύτρια, με πολυετή εμπειρία στην ψυχοθεραπεία και τη δικαστική ψυχολογία στο Μαρούσι.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           1. DESIGN TOKENS & VARIABLES
+           ========================================== */
+        :root {
+            /* Colors */
+            --c-bg-main: #FBF9F6;      /* Warm Alabaster */
+            --c-bg-alt: #F0EBE1;       /* Warm Stone */
+            --c-bg-dark: #1F2A25;      /* Deep Forest Slate */
+            --c-text-main: #2C3E38;    /* Dark Forest/Slate */
+            --c-text-light: #5A6D65;   /* Muted Slate */
+            --c-accent: #B8966E;       /* Muted Gold/Bronze */
+            --c-white: #FFFFFF;
+            
+            /* Typography */
+            --f-heading: 'Cormorant Garamond', serif;
+            --f-body: 'DM Sans', sans-serif;
+            
+            /* Spacing (Fluid) */
+            --s-section: clamp(5rem, 10vw, 10rem);
+            --s-container: 1280px;
+            
+            /* Easing */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* ==========================================
+           2. RESET & BASE
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--f-body);
+            background-color: var(--c-bg-main);
+            color: var(--c-text-main);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            line-height: 1.6;
+            font-size: 1.125rem;
+        }
+
+        ::selection {
+            background-color: var(--c-accent);
+            color: var(--c-white);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--c-bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--c-accent);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--f-heading);
+            font-weight: 400;
+            line-height: 1.1;
+            color: inherit;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--c-text-light);
+            font-weight: 300;
+        }
+        
+        p strong {
+            font-weight: 500;
+            color: var(--c-text-main);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==========================================
+           3. LAYOUT & UTILITIES
+           ========================================== */
+        .container {
+            max-width: var(--s-container);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: var(--s-section) 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: center;
+        }
+
+        .text-center { text-align: center; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background-color: var(--c-accent);
+            color: var(--c-white);
+            font-family: var(--f-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid var(--c-accent);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background-color: var(--c-bg-dark);
+            transition: height 0.4s var(--ease-out-expo);
+            z-index: 1;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover::after {
+            height: 100%;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--c-text-main);
+            border-color: var(--c-text-main);
+        }
+        
+        .btn-outline::after {
+            background-color: var(--c-text-main);
+        }
+        .btn-outline:hover {
+            color: var(--c-white);
+        }
+
+        /* Scroll Reveal Setup */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* ==========================================
+           4. COMPONENTS
+           ========================================== */
+           
+        /* Page Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--c-bg-dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s var(--ease-in-out), visibility 1s;
+        }
+
+        .loader-text {
+            color: var(--c-accent);
+            font-family: var(--f-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: loaderReveal 2s var(--ease-out-expo) forwards;
+        }
+
+        @keyframes loaderReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        nav.scrolled {
+            background: rgba(251, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            border-radius: 4px;
+            mix-blend-mode: multiply;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a.nav-item {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            color: var(--c-text-main);
+            position: relative;
+        }
+        
+        .nav-links a.nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--c-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a.nav-item:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .mobile-toggle span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--c-text-main);
+            transition: all 0.3s ease;
+        }
+        .mobile-toggle span:nth-child(1) { top: 0; }
+        .mobile-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span:nth-child(3) { bottom: 0; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: var(--c-bg-dark);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%; /* For parallax */
+            background-image: url('https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3926.JPG');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            transform: translateY(0);
+            will-change: transform;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--c-white);
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--c-white);
+        }
+
+        .hero p.subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: #EAE6DF;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        
+        .hero p.subtitle span {
+            color: var(--c-accent);
+            font-style: italic;
+            font-family: var(--f-heading);
+            font-size: 1.2em;
+        }
+
+        /* Marquee */
+        .marquee {
+            background-color: var(--c-accent);
+            color: var(--c-bg-main);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: flex;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee span {
+            font-family: var(--f-heading);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0 2rem;
+            display: inline-block;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* About Section */
+        .about-image-wrapper {
+            position: relative;
+            padding: 2rem 2rem 0 0;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            height: 90%;
+            background-color: var(--c-bg-alt);
+            z-index: 0;
+        }
+
+        .about-image {
+            position: relative;
+            z-index: 1;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 2rem;
+            color: var(--c-text-main);
+        }
+
+        /* Philosophy Section (The Thesis) */
+        .philosophy {
+            background-color: var(--c-bg-dark);
+            color: var(--c-bg-main);
+        }
+
+        .philosophy h2 {
+            color: var(--c-bg-main);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy .lead {
+            font-size: 1.25rem;
+            color: #EAE6DF;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .phil-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .phil-card {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+        }
+
+        .phil-card h3 {
+            font-size: 1.8rem;
+            color: var(--c-accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .phil-card p {
+            color: #CFCBC4;
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--c-bg-alt);
+            padding: 4rem 3rem;
+            transition: transform 0.4s var(--ease-out-expo), background-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background-color: #E5E0D5;
+        }
+
+        .service-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(44, 62, 56, 0.2);
+            border-radius: 50px;
+            color: var(--c-text-main);
+        }
+
+        /* Space Gallery */
+        .gallery-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .gallery-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: var(--c-text-light);
+            border-radius: 4px;
+        }
+
+        .gallery-item {
+            flex: 0 0 300px;
+            height: 400px;
+            scroll-snap-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* Reviews */
+        .reviews {
+            background-color: var(--c-bg-alt);
+            text-align: center;
+        }
+        
+        .review-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 2rem 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .review-slider::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+        
+        .review-card {
+            flex: 0 0 100%;
+            max-width: 600px;
+            scroll-snap-align: center;
+            background: var(--c-bg-main);
+            padding: 3rem;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-family: var(--f-heading);
+            font-size: 6rem;
+            color: rgba(184, 150, 110, 0.2);
+            line-height: 1;
+        }
+
+        .stars {
+            color: var(--c-accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            color: var(--c-text-main);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .review-author {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Contact & Footer */
+        .contact-section {
+            background-color: var(--c-bg-dark);
+            color: var(--c-white);
+            padding: 6rem 0 3rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h2 {
+            color: var(--c-white);
+            margin-bottom: 2rem;
+            font-size: clamp(2rem, 3vw, 3rem);
+        }
+
+        .info-block {
+            margin-bottom: 2rem;
+        }
+
+        .info-block h4 {
+            color: var(--c-accent);
+            font-family: var(--f-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-block p {
+            color: #CFCBC4;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--c-accent);
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--c-white);
+        }
+
+        /* ==========================================
+           5. RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 992px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .phil-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image-wrapper {
+                padding: 0 0 2rem 2rem;
+            }
+            .about-image-wrapper::before {
+                left: 0;
+                right: auto;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--c-bg-main);
+                flex-direction: column;
+                justify-content: center;
+                transition: right 0.5s var(--ease-out-expo);
+                z-index: 100;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .mobile-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .mobile-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            .hero h1 {
+                margin-top: 4rem;
+            }
+            .review-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-text">ΣΜΑΡΑΓΔΑ ΔΗΜΗΤΡΑ</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3925.jpg" alt="Σμαράγδα Δημητρά Logo">
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#about" class="nav-item">Προφιλ</a>
+                <a href="#services" class="nav-item">Υπηρεσιες</a>
+                <a href="#philosophy" class="nav-item">Προσεγγιση</a>
+                <a href="#reviews" class="nav-item">Αξιολογησεις</a>
+                <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Κλειστε Συνεδρια</span></a>
+            </div>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-bg" id="hero-parallax"></div>
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1>Σμαράγδα Δημητρά</h1>
+                <p class="subtitle">Συνθετική Ψυχοθεραπεία <span>&</span> Δικαστική Ψυχολογία</p>
+                <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Προγραμματιστε Ραντεβου</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
+            <span>ΑΝΤΙΚΕΙΜΕΝΙΚΟΤΗΤΑ</span><span>•</span>
+            <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
+            <span>ΣΥΝΘΕΤΙΚΗ ΨΥΧΟΘΕΡΑΠΕΙΑ</span><span>•</span>
+            <span>ΔΙΚΑΣΤΙΚΗ ΨΥΧΟΛΟΓΙΑ</span><span>•</span>
+            <!-- Duplicate for seamless loop -->
+            <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
+            <span>ΑΝΤΙΚΕΙΜΕΝΙΚΟΤΗΤΑ</span><span>•</span>
+            <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
+            <span>ΣΥΝΘΕΤΙΚΗ ΨΥΧΟΘΕΡΑΠΕΙΑ</span><span>•</span>
+            <span>ΔΙΚΑΣΤΙΚΗ ΨΥΧΟΛΟΓΙΑ</span><span>•</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container grid-2">
+            <div class="about-image-wrapper reveal">
+                <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/172830a61940550ef321ee9aa8c721d963cd6a51/c52dbc9b10df891c5349b9e591746c30.webp" alt="Σμαράγδα Δημητρά" class="about-image">
+            </div>
+            <div class="about-content reveal delay-1">
+                <h2>Η επιστημονική εγκυρότητα συναντά την ενσυναίσθηση.</h2>
+                <p>Η Σμαράγδα Δημητρά (MSc, PgD) είναι αδειούχος Ψυχολόγος, Συστημική (Οικογενειακή) και Προσωποκεντρική Ψυχοθεραπεύτρια, με πολυετή εμπειρία στην ψυχοθεραπεία και τη δικαστική ψυχολογία.</p>
+                <p>Είναι απόφοιτη του Τμήματος Ψυχολογίας του Πανεπιστημίου Κρήτης, κάτοχος μεταπτυχιακού διπλώματος στη Συστημική-Οικογενειακή Ψυχοθεραπεία και πιστοποιημένη στην ατομική συμβουλευτική (PgD Person-Centered Counseling, University of Strathclyde).</p>
+                <p>Η επαγγελματική της διαδρομή χαρακτηρίζεται από συνέπεια και ευρύ επιστημονικό πεδίο. Έχει προσφέρει τις υπηρεσίες της στη Ψυχιατρική Κλινική του Metropolitan Hospital, στη κλινική απεξάρτησης «Άγιος Νικόλαος», καθώς και στον Σύλλογο «Ελπίδα». Επί σειρά ετών υπήρξε επιστημονικός σύμβουλος στο Υπουργείο Προστασίας του Πολίτη, ενώ η ακαδημαϊκή της συνεισφορά περιλαμβάνει τη συμμετοχή της στη συγγραφή του βιβλίου «Λεξικό της Ψυχολογίας» (2005).</p>
+                <p>Από το 2006 διατηρεί το ιδιωτικό της γραφείο στο Μαρούσι. Παράλληλα, ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας, υπηρετεί ως πραγματογνώμονας στις εισαγγελικές αρχές, φέρνοντας την ίδια προσήλωση στην αλήθεια και την αντικειμενικότητα τόσο στην αίθουσα του δικαστηρίου όσο και στην πολυθρόνα του θεραπευτή.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn btn-outline"><span>Κλειστε Συνεδρια</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="section philosophy" id="philosophy">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2>Η Τέχνη της Αντικειμενικής Κατανόησης</h2>
+                <p class="lead">Από το Θεραπευτικό Δωμάτιο στην Αίθουσα του Δικαστηρίου. Πώς ισορροπώ ανάμεσα στη ζεστασιά μιας συνεδρίας και την αυστηρή φύση της Δικαστικής Ψυχολογίας; Η ουσία παραμένει η ίδια: η ανάγκη για βαθιά, αληθινή κατανόηση της ανθρώπινης εμπειρίας.</p>
+            </div>
+            
+            <div class="phil-grid">
+                <div class="phil-card reveal delay-1">
+                    <h3>Η «Δικαστική» Ματιά</h3>
+                    <p>Στον τομέα της Δικαστικής Ψυχολογίας, η δουλειά μου απαιτεί μια «χειρουργική» προσέγγιση της αλήθειας. Ως πραγματογνώμονας στην Εισαγγελία, ο ρόλος μου είναι να παρέχω τις απαραίτητες επιστημονικές απαντήσεις που μπορούν να αποδώσουν δικαιοσύνη. Εκεί, η αντικειμενικότητα δεν είναι απλώς επιθυμητή, είναι νομική επιταγή.</p>
+                </div>
+                <div class="phil-card reveal delay-2">
+                    <h3>Η «Θεραπευτική» Ματιά</h3>
+                    <p>Στο θεραπευτικό δωμάτιο, η αντικειμενικότητα δίνει τη θέση της στην ενσυναίσθηση. Εκεί δεν είμαστε για να κρίνουμε, αλλά για να κατανοήσουμε. Η συστημική και προσωποκεντρική προσέγγιση μου επιτρέπει να «μπω» στον κόσμο του θεραπευόμενου, να δω τον κόσμο με τα δικά του μάτια.</p>
+                </div>
+                <div class="phil-card reveal delay-3">
+                    <h3>Η Σύνθεση</h3>
+                    <p>Η εμπειρία μου από τη Ψυχιατρική Κλινική, το Υπουργείο Προστασίας του Πολίτη και τα δικαστήρια μου έχει διδάξει να μην τρομάζω από τη δυσκολία. Μπορώ να διακρίνω πότε ένας άνθρωπος χρειάζεται έναν θεραπευτή για να επουλώσει τα τραύματά του και πότε την επιστημονική παρέμβαση.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2>Υπηρεσίες</h2>
+                <p>Εξειδικευμένη προσέγγιση προσαρμοσμένη στις δικές σας ανάγκες.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Therapy -->
+                <div class="service-card reveal delay-1">
+                    <h3>Ψυχοθεραπεία & Συμβουλευτική<br><span style="font-size: 0.6em; color: var(--c-text-light); font-family: var(--f-body);">(Ατομική & Οικογενειακή)</span></h3>
+                    <p>Ο στόχος της θεραπείας είναι να δημιουργήσουμε έναν ασφαλή «χώρο» για εσάς. Είτε πρόκειται για ατομική ψυχοθεραπεία (Προσωποκεντρική/Συστημική), είτε για θεραπεία ζεύγους και συμβουλευτική γονέων, η προσέγγισή μου εστιάζει στην αποδοχή, την κατανόηση των οικογενειακών δυναμικών και την ενδυνάμωση. Οι συνεδρίες προσφέρονται τόσο δια ζώσης στο Μαρούσι όσο και μέσω διαδικτύου.</p>
+                    <div class="service-tags">
+                        <span class="tag">Απλή συνεδρία (50')</span>
+                        <span class="tag">Ψυχοθεραπεία Online (50')</span>
+                        <span class="tag">Ατομικές ενηλίκων (50')</span>
+                        <span class="tag">Θεραπεία ζεύγους (60')</span>
+                        <span class="tag">Συμβουλευτική γονέων (50')</span>
+                        <span class="tag">Ψυχοθεραπεία ΛΟΑΤΚΙ (50')</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Κλειστε Συνεδρια</span></a>
+                    </div>
+                </div>
+
+                <!-- Forensic -->
+                <div class="service-card reveal delay-2">
+                    <h3>Δικαστική Ψυχολογία &<br>Πραγματογνωμοσύνες<br><span style="font-size: 0.6em; color: var(--c-text-light); font-family: var(--f-body); opacity:0;">(Διαχωριστικό)</span></h3>
+                    <p>Ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας και με πολυετή θητεία ως πραγματογνώμονας στις Εισαγγελικές αρχές, αναλαμβάνω τη σύνταξη δικαστικών πραγματογνωμοσυνών και τη συμβουλευτική σε νομικά θέματα που απαιτούν εξειδικευμένη ψυχολογική εκτίμηση. Η υπηρεσία διέπεται από απόλυτη αντικειμενικότητα, αυστηρή τήρηση των νομικών πλαισίων και επιστημονική τεκμηρίωση.</p>
+                    <div class="service-tags">
+                        <span class="tag">Δικαστική ψυχολογία (60')</span>
+                        <span class="tag">Σύνταξη πραγματογνωμοσυνών</span>
+                        <span class="tag">Νομική συμβουλευτική</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Επικοινωνηστε</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Space Gallery -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container reveal">
+            <h2 style="margin-bottom: 2rem; font-size: 2rem;">Ο Χώρος</h2>
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-38.jpg" alt="Γραφείο Μαρούσι" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-39.jpg" alt="Χώρος Συνεδριών" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-40.jpg" alt="Αναμονή" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-41.jpg" alt="Λεπτομέρειες Χώρου" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Χώρος Συνεδριών" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Βιβλιοθήκη" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews" id="reviews">
+        <div class="container reveal">
+            <h2>Εμπειρίες Θεραπευόμενων</h2>
+            <p>Διαβάστε τι λένε οι άνθρωποι που μας εμπιστεύτηκαν.</p>
+            
+            <div class="review-slider">
+                <div class="review-card">
+                    <div class="stars">★★★★★ 10.0</div>
+                    <p class="review-text">«ΚΑΤΑΛΑΒΑ ΠΩΣ ΕΧΕΙ ΓΝΩΣΗ ΤΟΥ ΘΕΜΑΤΟΣ ΠΟΥ ΤΗΣ ΕΦΕΡΑ ΚΑΙ ΗΤΑΝ ΕΠΕΞΗΓΗΜΑΤΙΚΗ ΚΑΙ ΣΕ ΕΜΕΝΑ ΚΑΙ ΩΣ ΠΡΟΣ ΤΟ ΠΑΙΔΙ ΜΟΥ»</p>
+                    <div class="review-author">
+                        <span><strong>Ελένη</strong> • 1 αξιολόγηση</span>
+                        <span style="color: var(--c-text-light);">11 Οκτωβρίου 2023</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★ 10.0</div>
+                    <p class="review-text">«Τα θέματα μου αντιμετωπίζονται πάντα με επαγγελματισμό αλλά και με ανθρώπινο τρόπο. Κυρία Σμαράγδα ακούει με προσοχή και καταλαβαίνει έτσι την ουσία του ζητήματος, προσφέροντας πολύτιμές συμβουλές και γνώσεις.»</p>
+                    <div class="review-author">
+                        <span><strong>Sini</strong> • 2 αξιολογήσεις</span>
+                        <span style="color: var(--c-text-light);">02 Αυγούστου 2023</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★ 10.0</div>
+                    <p class="review-text">«Εξαιρετικές συμβουλές για την περίπτωση μου, πολύ ευγενική και ανθρώπινη, μου έδωσε πίστη στο ότι προχωράω σωστά και εξηγησε τι άλλο μπορώ να κάνω. Έμπειρη και καθησυχάστικη. Θερμά μου ευχαριστώ!»</p>
+                    <div class="review-author">
+                        <span><strong>Sini</strong> • 2 αξιολογήσεις</span>
+                        <span style="color: var(--c-text-light);">26 Ιουλίου 2022</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★ 10.0</div>
+                    <p class="review-text">«Αξιόλογη, χαμογελαστή και άμεση στην επικοινωνια»</p>
+                    <div class="review-author">
+                        <span><strong>Αννα</strong> • 6 αξιολογήσεις</span>
+                        <span style="color: var(--c-text-light);">17 Ιουνίου 2022</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <a href="https://www.doctoranytime.gr/d/Psychologos/dimitra-smaragda#review-section" target="_blank" class="btn btn-outline" style="border-color: var(--c-text-main);"><span>Περισσοτερες Αξιολογησεις</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <h2>Επικοινωνία</h2>
+                    <p style="color: #CFCBC4; margin-bottom: 3rem; max-width: 400px;">Είτε χρειάζεστε ένα ασφαλές πλαίσιο ψυχοθεραπείας, είτε μια έγκυρη επιστημονική εκτίμηση, είμαι εδώ για να σας ακούσω.</p>
+                    
+                    <div class="info-block">
+                        <h4>Τοποθεσια</h4>
+                        <p>Θέμιδος 4 (Δίπλα στο σταθμό ΗΣΑΠ)<br>Μαρούσι, Αττική<br><span style="font-size: 0.9em; opacity: 0.8;">*Παρέχεται θέση στάθμευσης</span></p>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h4>Τηλεφωνο</h4>
+                        <p><a href="tel:6944362638" style="color: inherit; text-decoration: none;">694 436 2638</a></p>
+                    </div>
+                    
+                    <div style="margin-top: 3rem;">
+                        <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Προγραμματιστε Ραντεβου</span></a>
+                    </div>
+                </div>
+                
+                <div class="reveal delay-1" style="height: 100%; min-height: 400px; background-color: var(--c-bg-main); border-radius: 4px; overflow: hidden;">
+                    <!-- CSS simulated map placeholder for aesthetics in single file -->
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-image: url('https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-38.jpg'); background-size: cover; background-position: center; position: relative;">
+                        <div style="position: absolute; inset: 0; background: rgba(31, 42, 37, 0.7);"></div>
+                        <a href="https://maps.google.com/?q=Θέμιδος+4,+Μαρούσι" target="_blank" class="btn btn-outline" style="color: var(--c-white); border-color: var(--c-white);"><span>Ανοιγμα στους Χαρτες</span></a>
+                    </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div>&copy; <span id="year"></span> Σμαράγδα Δημητρά. Με επιφύλαξη παντός δικαιώματος.</div>
+                <div>Designed by <a href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></div>
+            </footer>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Loader Removal
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 1500);
+
+            // 2. Dynamic Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // 3. Navbar Scroll Effect & Mobile Toggle
+            const navbar = document.getElementById('navbar');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // 4. Scroll Reveal with IntersectionObserver
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => revealOnScroll.observe(el));
+
+            // 5. Parallax Effect on Hero
+            const heroParallax = document.getElementById('hero-parallax');
+            
+            const performParallax = () => {
+                const scrolled = window.scrollY;
+                if(scrolled < window.innerHeight) {
+                    heroParallax.style.transform = `translateY(${scrolled * 0.4}px)`;
+                }
+            };
+            
+            // Throttle scroll for performance
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        performParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
