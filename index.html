@@ -920,11 +920,11 @@
                 animation: none;
             }
             
-            /* Custom Hero Mobile CTA - Moved a bit to the Left (from right edge) */
+            /* Custom Hero Mobile CTA - Moved a tiny bit more left */
             .hero-cta-wrapper {
                 display: flex !important;
                 justify-content: flex-end; 
-                padding-right: 3.5rem; /* Increased padding moves it more to the left */
+                padding-right: 4.5rem; /* Increased padding to move it left */
                 bottom: 4.5rem; 
                 transform: none; 
             }
@@ -1319,22 +1319,52 @@
 
             activeReveals.forEach(element => elementRevealObserver.observe(element));
 
-            // 5. Space Gallery Horizontal Arrows Scroll Logic
+            // 5. Infinite Image Gallery Logic
             const spaceGallery = document.getElementById('space-gallery');
             const prevArrow = document.querySelector('.prev-arrow');
             const nextArrow = document.querySelector('.next-arrow');
             
-            if(spaceGallery && prevArrow && nextArrow) {
-                // Width of one item + gap (~340px)
-                const scrollAmount = 340; 
+            if (spaceGallery && prevArrow && nextArrow) {
+                // Dynamically clone images to create an endless loop effect
+                const originalItems = Array.from(spaceGallery.children);
+                
+                // Clone the items multiple times to give plenty of "runway" before loop resets
+                for (let i = 0; i < 4; i++) {
+                    originalItems.forEach(item => {
+                        let clone = item.cloneNode(true);
+                        spaceGallery.appendChild(clone);
+                    });
+                }
                 
                 prevArrow.addEventListener('click', () => {
-                    spaceGallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    const itemWidth = spaceGallery.children[0].offsetWidth + 24; // Width + grid gap
+                    if (spaceGallery.scrollLeft <= 10) {
+                        spaceGallery.scrollTo({ left: spaceGallery.scrollWidth, behavior: 'smooth' });
+                    } else {
+                        spaceGallery.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+                    }
                 });
                 
                 nextArrow.addEventListener('click', () => {
-                    spaceGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    const itemWidth = spaceGallery.children[0].offsetWidth + 24;
+                    const maxScroll = spaceGallery.scrollWidth - spaceGallery.clientWidth;
+                    
+                    if (spaceGallery.scrollLeft >= maxScroll - 10) {
+                        spaceGallery.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        spaceGallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                    }
                 });
+
+                // Auto reset if dragged natively to the absolute end
+                spaceGallery.addEventListener('scroll', () => {
+                    const maxScroll = spaceGallery.scrollWidth - spaceGallery.clientWidth;
+                    if (spaceGallery.scrollLeft >= maxScroll - 5) {
+                        spaceGallery.style.scrollSnapType = 'none';
+                        spaceGallery.scrollLeft = 0;
+                        setTimeout(() => spaceGallery.style.scrollSnapType = 'x mandatory', 50);
+                    }
+                }, { passive: true });
             }
 
             // 6. High-Performance Parallax Engine for Cinematic Hero Background
