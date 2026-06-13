@@ -545,90 +545,32 @@
 
         .service-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             color: var(--c-text-main);
         }
 
         .service-tags {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 2rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
         .tag {
-            font-size: 0.75rem;
-            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.2rem;
             border: 1px solid rgba(44, 62, 56, 0.15);
             border-radius: 50px;
             color: var(--c-text-main);
-            background-color: rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.4);
             transition: all 0.3s ease;
+            line-height: 1.4;
         }
         
         .service-card:hover .tag {
             border-color: var(--c-accent);
             background-color: var(--c-white);
-        }
-
-        /* Philosophy / Approach Section */
-        .philosophy {
-            background-color: var(--c-bg-dark);
-            color: var(--c-bg-main);
-            overflow: hidden;
-        }
-
-        .philosophy h2 {
-            color: var(--c-bg-main);
-            font-size: clamp(2rem, 3vw, 2.8rem);
-            margin-bottom: 1.2rem;
-        }
-
-        .philosophy .lead {
-            font-size: 1.15rem;
-            color: #EAE6DF;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .phil-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .phil-card {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2.5rem;
-            position: relative;
-            transition: transform 0.4s ease;
-        }
-        
-        .phil-card::after {
-            content: '';
-            position: absolute;
-            top: -1px; left: 0; width: 0; height: 1px;
-            background-color: var(--c-accent);
-            transition: width 0.6s var(--ease-out-expo);
-        }
-        
-        .phil-card:hover { transform: translateY(-5px); }
-        .phil-card:hover::after { width: 100%; }
-
-        .phil-card h3 {
-            font-size: 1.6rem;
-            color: var(--c-accent);
-            margin-bottom: 1rem;
-        }
-        
-        .phil-card p {
-            color: #D1C9BE;
-            font-size: 0.95rem;
-            line-height: 1.7;
         }
 
         /* Elegant Space Gallery Strip with Arrows */
@@ -858,7 +800,6 @@
            ========================================== */
         @media (max-width: 992px) {
             /* General Grid Adjustments for Tablet/Mobile */
-            .phil-grid { grid-template-columns: 1fr; gap: 2rem; }
             .services-grid { grid-template-columns: 1fr; gap: 2rem; }
             .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
             .map-wrapper { min-height: 350px; }
@@ -961,12 +902,12 @@
                 line-height: 1.55;
             }
             
-            h2, .about-grid h2, .philosophy h2, .contact-info h2 {
+            h2, .about-grid h2, .contact-info h2 {
                 font-size: 1.6rem !important;
                 line-height: 1.3;
             }
             
-            h3, .service-card h3, .phil-card h3 {
+            h3, .service-card h3 {
                 font-size: 1.35rem !important;
             }
             
@@ -976,8 +917,8 @@
             }
             
             .tag {
-                font-size: 0.7rem !important;
-                padding: 0.35rem 0.8rem !important;
+                font-size: 0.75rem !important;
+                padding: 0.4rem 1rem !important;
             }
             
             .btn {
@@ -1021,7 +962,6 @@
             <div class="nav-links" id="nav-links">
                 <a href="#about" class="nav-item">Προφιλ</a>
                 <a href="#services" class="nav-item">Υπηρεσιες</a>
-                <a href="#philosophy" class="nav-item">Προσεγγιση</a>
                 <a href="#reviews" class="nav-item">Αξιολογησεις</a>
                 <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Κλειστε Ραντεβου</span></a>
             </div>
@@ -1095,7 +1035,6 @@
                 <!-- Therapy Block -->
                 <div class="service-card reveal reveal-scale">
                     <h3>Ψυχοθεραπεία & Συμβουλευτική</h3>
-                    <p>Ο στόχος της θεραπείας είναι να δημιουργήσουμε έναν ασφαλή «χώρο» για εσάς. Είτε πρόκειται για ατομική ψυχοθεραπεία (Προσωποκεντρική/Συστημική), είτε για θεραπεία ζεύγους και συμβουλευτική γονέων, η προσέγγισή μου εστιάζει στην αποδοχή, την κατανόηση των οικογενειακών δυναμικών και την ενδυνάμωση. Οι συνεδρίες προσφέρονται τόσο δια ζώσης στο Μαρούσι (δίπλα στον σταθμό ΗΣΑΠ) όσο και μέσω διαδικτύου, διασφαλίζοντας την ίδια ποιότητα και εχεμύθεια.</p>
                     <div class="service-tags">
                         <span class="tag">Απλή συνεδρία</span>
                         <span class="tag">Ψυχοθεραπεία Online</span>
@@ -1109,38 +1048,13 @@
                 <!-- Forensic Block -->
                 <div class="service-card reveal reveal-scale delay-1">
                     <h3>Δικαστική Ψυχολογία &<br>Πραγματογνωμοσύνες</h3>
-                    <p>Ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας και με πολυετή θητεία ως πραγματογνώμονας στις Εισαγγελικές αρχές, αναλαμβάνω τη σύνταξη δικαστικών πραγματογνωμοσυνών και τη συμβουλευτική σε νομικά θέματα που απαιτούν εξειδικευμένη ψυχολογική εκτίμηση. Η υπηρεσία αυτή διέπεται από απόλυτη αντικειμενικότητα, αυστηρή τήρηση των νομικών πλαισίων και επιστημονική τεκμηρίωση για κάθε υπόθεση που χρήζει δικαστικής παρέμβασης.</p>
                     <div class="service-tags">
-                        <span class="tag">Δικαστική ψυχολογία</span>
-                        <span class="tag">Σύνταξη Πραγματογνωμοσυνών</span>
-                        <span class="tag">Νομική Συμβουλευτική</span>
-                        <span class="tag">Επιστημονική Τεκμηρίωση</span>
+                        <span class="tag">Ψυχολογική αξιολόγηση γονέων και ανηλίκων</span>
+                        <span class="tag">Σύνταξη ψυχολογικών εκθέσεων για δικαστική χρήση</span>
+                        <span class="tag">Υποθέσεις γονικής αποξένωσης</span>
+                        <span class="tag">Υποθέσεις ενδοοικογενειακής βίας</span>
+                        <span class="tag">Συμμετοχή ως Τεχνικός Σύμβουλος σε υποθέσεις που εξετάζονται στη δομή «Σπίτι του Παιδιού», συμπεριλαμβανομένης της σύνταξης τεχνικών εκθέσεων</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy / Approach Section -->
-    <section class="section philosophy" id="philosophy">
-        <div class="container">
-            <div class="text-center reveal">
-                <h2>Από το Θεραπευτικό Δωμάτιο στην Αίθουσα του Δικαστηρίου: Η Τέχνη της Αντικειμενικής Κατανόησης</h2>
-                <p class="lead">Στην επαγγελματική μου πορεία, συχνά με ρωτούν πώς ισορροπώ ανάμεσα στη ζεστασιά μιας θεραπευτικής συνεδρίας και την αυστηρή, αντικειμενική φύση της Δικαστικής Ψυχολογίας. Η απάντηση κρύβεται στην πίστη μου ότι, είτε είμαστε στην αίθουσα ενός δικαστηρίου είτε στο γραφείο μου, η ουσία παραμένει η ίδια: η ανάγκη για βαθιά, αληθινή κατανόηση της ανθρώπινης εμπειρίας.</p>
-            </div>
-            
-            <div class="phil-grid">
-                <div class="phil-card reveal delay-1">
-                    <h3>Η «Δικαστική» Ματιά</h3>
-                    <p>Στον τομέα της Δικαστικής Ψυχολογίας, η δουλειά μου απαιτεί μια «χειρουργική» προσέγγιση της αλήθειας. Ως πραγματογνώμονας στην Εισαγγελία, ο ρόλος μου είναι να παρέχω τις απαραίτητες επιστημονικές απαντήσεις που μπορούν να αποδώσουν δικαιοσύνη. Εκεί, η αντικειμενικότητα δεν είναι απλώς επιθυμητή, είναι νομική επιταγή.</p>
-                </div>
-                <div class="phil-card reveal delay-2">
-                    <h3>Η «Θεραπευτική» Ματιά</h3>
-                    <p>Αντίθετα, στο θεραπευτικό δωμάτιο, η αντικειμενικότητα δίνει τη θέση της στην ενσυναίσθηση. Εκεί δεν είμαστε για να κρίνουμε, αλλά για να κατανοήσουμε. Η συστημική και προσωποκεντρική προσέγγιση που ακολουθώ μου επιτρέπει να «μπω» στον κόσμο του θεραπευόμενου, να δω τον κόσμο με τα δικά του μάτια, ακόμα και όταν ο ίδιος ο θεραπευόμενος δυσκολεύεται να αποδεχτεί τις δικές του πράξεις ή συναισθήματα.</p>
-                </div>
-                <div class="phil-card reveal delay-3">
-                    <h3>Η Σύνθεση</h3>
-                    <p>Η εμπειρία μου από τη Ψυχιατρική Κλινική, το Υπουργείο Προστασίας του Πολίτη και τα δικαστήρια μου έχει διδάξει να μην τρομάζω από τη δυσκολία, τον πόνο ή τις συγκρούσεις. Μπορώ να διακρίνω πότε ένας άνθρωπος χρειάζεται έναν θεραπευτή για να επουλώσει τα τραύματά του και πότε χρειάζεται την επιστημονική μου παρέμβαση για να προστατεύσει τα έννομα συμφέροντά του.</p>
                 </div>
             </div>
         </div>
