@@ -631,7 +631,43 @@
             line-height: 1.7;
         }
 
-        /* Elegant Space Gallery Strip */
+        /* Elegant Space Gallery Strip with Arrows */
+        .gallery-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background-color: rgba(251, 249, 246, 0.95);
+            color: var(--c-accent);
+            border: 1px solid rgba(184, 150, 110, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            font-family: var(--f-body);
+        }
+
+        .gallery-arrow:hover {
+            background-color: var(--c-accent);
+            color: var(--c-white);
+            border-color: var(--c-accent);
+        }
+
+        .prev-arrow { left: -22px; }
+        .next-arrow { right: -22px; }
+
         .gallery-container {
             display: flex;
             gap: 1.5rem;
@@ -640,6 +676,7 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            width: 100%;
         }
         
         .gallery-container::-webkit-scrollbar { display: none; }
@@ -842,6 +879,9 @@
                 align-self: start;
             }
             .about-image-wrapper::before { left: 0; right: auto; }
+            
+            .prev-arrow { left: 10px; }
+            .next-arrow { right: 10px; }
         }
 
         @media (max-width: 768px) {
@@ -876,21 +916,21 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center 30%;
-                transform: none !important; 
+                transform: none !important; /* Force override javascript parallax */
                 animation: none;
             }
             
-            /* Custom Hero Mobile CTA - Smaller, Higher up, Aligned Right */
+            /* Custom Hero Mobile CTA - Moved a bit to the Left (from right edge) */
             .hero-cta-wrapper {
                 display: flex !important;
-                justify-content: flex-end; /* Align right */
-                padding-right: 1.5rem; /* Margin from right edge */
-                bottom: 4.5rem; /* Move higher up */
-                transform: none; /* Remove any translation */
+                justify-content: flex-end; 
+                padding-right: 3.5rem; /* Increased padding moves it more to the left */
+                bottom: 4.5rem; 
+                transform: none; 
             }
             .hero-cta-wrapper .btn {
-                font-size: 0.6rem !important; /* Smaller text */
-                padding: 0.6rem 1.1rem !important; /* Smaller button shape */
+                font-size: 0.6rem !important; 
+                padding: 0.6rem 1.1rem !important; 
             }
             
             /* Make About section much closer to Hero */
@@ -1106,18 +1146,23 @@
         </div>
     </section>
 
-    <!-- Space Gallery Strip -->
+    <!-- Space Gallery Strip with Arrows -->
     <section class="section" style="padding-top: clamp(4rem, 10vw, 8rem);">
         <div class="container reveal">
             <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Ο Χώρος</h2>
             <p style="margin-bottom: 2.5rem; max-width: 750px; color: var(--c-text-light); font-weight: 300; line-height: 1.7;">Ο χώρος των συνεδριών έχει σχεδιαστεί με φροντίδα ώστε να αποπνέει ηρεμία, ζεστασιά και ασφάλεια, προσφέροντας ένα περιβάλλον όπου μπορείτε να αισθανθείτε άνετα και ελεύθερα από την πρώτη στιγμή.</p>
-            <div class="gallery-container">
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-38.jpg" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-39.jpg" alt="Χώρος Συνεδριών" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-40.jpg" alt="Γραφείο Συμβουλευτικής" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-41.jpg" alt="Λεπτομέρειες Χώρου Αναμονής" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy"></div>
+            
+            <div class="gallery-wrapper">
+                <button class="gallery-arrow prev-arrow" aria-label="Προηγούμενη εικόνα">&#8592;</button>
+                <div class="gallery-container" id="space-gallery">
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-38.jpg" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy"></div>
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-39.jpg" alt="Χώρος Συνεδριών" loading="lazy"></div>
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-40.jpg" alt="Γραφείο Συμβουλευτικής" loading="lazy"></div>
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/8df681945bbdbed19ca594e841f7651aa76b7a3c/unnamed-41.jpg" alt="Λεπτομέρειες Χώρου Αναμονής" loading="lazy"></div>
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy"></div>
+                    <div class="gallery-item"><img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy"></div>
+                </div>
+                <button class="gallery-arrow next-arrow" aria-label="Επόμενη εικόνα">&#8594;</button>
             </div>
         </div>
     </section>
@@ -1274,7 +1319,25 @@
 
             activeReveals.forEach(element => elementRevealObserver.observe(element));
 
-            // 5. High-Performance Parallax Engine for Cinematic Hero Background
+            // 5. Space Gallery Horizontal Arrows Scroll Logic
+            const spaceGallery = document.getElementById('space-gallery');
+            const prevArrow = document.querySelector('.prev-arrow');
+            const nextArrow = document.querySelector('.next-arrow');
+            
+            if(spaceGallery && prevArrow && nextArrow) {
+                // Width of one item + gap (~340px)
+                const scrollAmount = 340; 
+                
+                prevArrow.addEventListener('click', () => {
+                    spaceGallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+                
+                nextArrow.addEventListener('click', () => {
+                    spaceGallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // 6. High-Performance Parallax Engine for Cinematic Hero Background
             const parallaxHeroAsset = document.getElementById('hero-parallax');
             
             const triggerParallaxShift = () => {
