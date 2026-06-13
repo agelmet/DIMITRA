@@ -6,6 +6,7 @@
     <title>Σμαράγδα Δημητρά | Δικαστική Ψυχολόγος - Οικογενειακή Σύμβουλος</title>
     <meta name="description" content="Η Σμαράγδα Δημητρά είναι ψυχολόγος, συστημική και προσωποκεντρική θεραπεύτρια, με άδεια ασκήσεως επαγγέλματος. Πολυετής εμπειρία στην ψυχοθεραπεία και τη δικαστική ψυχολογία.">
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -110,6 +111,11 @@
             max-width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* Image Zoom Styling */
+        .zoomable {
+            cursor: zoom-in;
         }
 
         /* ==========================================
@@ -755,6 +761,54 @@
         footer a { color: var(--c-accent); transition: color 0.3s ease; }
         footer a:hover { color: var(--c-white); }
 
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(31, 42, 37, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            color: var(--c-white);
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .lightbox-close:hover {
+            color: var(--c-accent);
+        }
+
         /* ==========================================
            5. RESPONSIVE DESIGN
            ========================================== */
@@ -821,11 +875,11 @@
                 animation: none;
             }
             
-            /* Custom Hero Mobile CTA - Moved a tiny bit more left */
+            /* Custom Hero Mobile CTA */
             .hero-cta-wrapper {
                 display: flex !important;
                 justify-content: flex-end; 
-                padding-right: 4.5rem; /* Increased padding to move it left */
+                padding-right: 4.5rem; 
                 bottom: 4.5rem; 
                 transform: none; 
             }
@@ -860,6 +914,16 @@
 
             .space-item {
                 height: 350px;
+            }
+
+            /* Lightbox adjust close button */
+            .lightbox-close {
+                top: 1rem;
+                right: 1.5rem;
+                font-size: 2.5rem;
+            }
+            .lightbox {
+                padding: 1rem;
             }
 
             /* -------------------------------------
@@ -916,12 +980,14 @@
 </head>
 <body>
 
+    <!-- Curtain Page Loader -->
     <div class="loader" id="loader">
         <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3925.jpg" alt="Σμαράγδα Δημητρά Logo" class="loader-logo">
         <div class="loader-text">Σμαράγδα Δημητρά</div>
         <div class="loader-subtitle">Δικαστική Ψυχολόγος - Οικογενειακή Σύμβουλος</div>
     </div>
 
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="container nav-inner">
             <a href="#" class="logo">
@@ -939,14 +1005,17 @@
         </div>
     </nav>
 
+    <!-- Pure Textless Cinematic Hero -->
     <section class="hero" id="home">
         <div class="hero-bg" id="hero-parallax"></div>
         
+        <!-- Mobile Specific CTA -->
         <div class="hero-cta-wrapper reveal delay-3">
             <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Κλειστε Ραντεβου</span></a>
         </div>
     </section>
 
+    <!-- Marquee Info Strip -->
     <div class="marquee">
         <div class="marquee-inner">
             <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
@@ -954,6 +1023,7 @@
             <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
             <span>ΟΙΚΟΓΕΝΕΙΑΚΗ ΣΥΜΒΟΥΛΟΣ</span><span>•</span>
             <span>ΔΙΚΑΣΤΙΚΗ ΨΥΧΟΛΟΓΟΣ</span><span>•</span>
+            <!-- Duplicated loop sequence -->
             <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
             <span>ΑΝΤΙΚΕΙΜΕΝΙΚΟΤΗΤΑ</span><span>•</span>
             <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
@@ -962,6 +1032,7 @@
         </div>
     </div>
 
+    <!-- About / Profile Section with Dynamic CSS Grid Reordering -->
     <section class="section" id="about">
         <div class="container about-grid">
             
@@ -972,7 +1043,7 @@
             </div>
             
             <div class="about-image-wrapper reveal reveal-scale delay-1">
-                <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3934.JPG" alt="Σμαράγδα Δημητρά" class="about-image">
+                <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3934.JPG" alt="Σμαράγδα Δημητρά" class="about-image zoomable">
             </div>
             
             <div class="about-text-part-2 reveal delay-2">
@@ -986,6 +1057,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
             <div class="services-header reveal">
@@ -994,6 +1066,7 @@
             </div>
             
             <div class="services-grid">
+                <!-- Therapy Block -->
                 <div class="service-card reveal reveal-scale">
                     <h3>Ψυχοθεραπεία & Συμβουλευτική</h3>
                     <div class="service-tags">
@@ -1006,6 +1079,7 @@
                     </div>
                 </div>
 
+                <!-- Forensic Block -->
                 <div class="service-card reveal reveal-scale delay-1">
                     <h3>Δικαστική Ψυχολογία</h3>
                     <div class="service-tags">
@@ -1020,6 +1094,7 @@
         </div>
     </section>
 
+    <!-- Space Static Grid Layout -->
     <section class="section" style="padding-top: clamp(4rem, 10vw, 8rem);">
         <div class="container reveal">
             <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Ο Χώρος</h2>
@@ -1027,18 +1102,19 @@
             
             <div class="space-grid">
                 <div class="space-item reveal delay-1">
-                    <img src="https://github.com/agelmet/DIMITRA/blob/main/unnamed-38.jpg?raw=true" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3936.JPG" alt="Εσωτερικός Χώρος Γραφείου" loading="lazy" class="zoomable">
                 </div>
                 <div class="space-item reveal delay-2">
-                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3927.JPG" alt="Αναπαυτικό Θεραπευτικό Πλαίσιο" loading="lazy" class="zoomable">
                 </div>
                 <div class="space-item reveal delay-3">
-                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3928.JPG" alt="Επιστημονική Βιβλιοθήκη" loading="lazy" class="zoomable">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Reviews Section -->
     <section class="section reviews" id="reviews">
         <div class="container reveal">
             <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 1.5rem;">Εμπειρίες Θεραπευόμενων</h2>
@@ -1087,6 +1163,7 @@
         </div>
     </section>
 
+    <!-- Contact & Maps Section -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-grid">
@@ -1101,7 +1178,7 @@
                     
                     <div class="info-block">
                         <h4>Αμεση Επικοινωνια</h4>
-                        <p><a href="tel:6944362638" style="color: inherit; text-decoration: none; font-weight: 500;">694 436 2638</a></p>
+                        <p><a href="tel:6944362638" style="color: inherit; text-decoration: none; font-weight: 500;">6944 36 26 38</a></p>
                     </div>
                     
                     <div style="margin-top: 3.5rem;">
@@ -1109,6 +1186,7 @@
                     </div>
                 </div>
                 
+                <!-- Live Functional Google Maps Embed -->
                 <div class="reveal delay-1">
                     <div class="map-wrapper">
                         <iframe 
@@ -1128,6 +1206,13 @@
         </div>
     </section>
 
+    <!-- Lightbox Modal for Images -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Προβολή εικόνας">
+    </div>
+
+    <!-- Core Interactive Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -1187,7 +1272,39 @@
 
             activeReveals.forEach(element => elementRevealObserver.observe(element));
 
-            // 5. High-Performance Parallax Engine for Cinematic Hero Background
+            // 5. Lightbox functionality for zooming images
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const zoomableImages = document.querySelectorAll('.zoomable');
+
+            zoomableImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Stop background scrolling
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => { lightboxImg.src = ''; }, 300); // Clear source after transition
+            };
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // 6. High-Performance Parallax Engine for Cinematic Hero Background
             const parallaxHeroAsset = document.getElementById('hero-parallax');
             
             const triggerParallaxShift = () => {
