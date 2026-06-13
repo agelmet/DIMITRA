@@ -6,6 +6,7 @@
     <title>Σμαράγδα Δημητρά | Συνθετική Ψυχοθεραπεία & Δικαστική Ψυχολογία</title>
     <meta name="description" content="Η Σμαράγδα Δημητρά είναι Ψυχολόγος, Συστημική και Προσωποκεντρική Ψυχοθεραπεύτρια, με πολυετή εμπειρία στην ψυχοθεραπεία και τη δικαστική ψυχολογία στο Μαρούσι.">
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -211,10 +212,10 @@
         /* Modern Curtain Page Loader */
         .loader {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0; /* Forces full coverage regardless of viewport bugs */
+            top: 0; left: 0; right: 0; bottom: 0; 
             width: 100vw; 
-            height: 100vh; /* Fallback for older browsers */
-            height: 100dvh; /* Dynamic viewport height for modern mobile browsers */
+            height: 100vh; 
+            height: 100dvh; 
             background-color: var(--c-bg-dark);
             z-index: 9999;
             display: flex;
@@ -420,7 +421,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Advanced Grid for About Section (For seamless Mobile reordering) */
+        /* Advanced Grid for About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -847,20 +848,21 @@
             .mobile-toggle.active span:nth-child(2) { opacity: 0; }
             .mobile-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
             
-            /* Responsive 100vh True-to-Size Cover for Hero */
+            /* Responsive True-to-Size Container for Hero Image */
             .hero {
-                height: 100vh;
-                height: 100dvh; /* modern mobile fill */
-                min-height: 500px;
+                height: 50vh;
+                min-height: 400px;
             }
             .hero-bg {
-                background-size: cover;
-                background-position: center; /* Center appropriately */
-                transform: scale(1.05); /* Account for parallax edge gaps */
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center 30%;
+                transform: none !important; /* Force override javascript parallax */
                 animation: none;
             }
             .hero-cta-wrapper {
                 display: block; /* Show CTA only on mobile */
+                bottom: 2.5rem;
             }
             
             /* Compact Mobile Marquee Banner Styling */
@@ -871,6 +873,13 @@
                 letter-spacing: 0.1em;
             }
             
+            /* Make Philosophy Heading Smaller in Mobile */
+            .philosophy h2 {
+                font-size: 1.45rem;
+                line-height: 1.35;
+                margin-bottom: 1rem;
+            }
+            
             .service-card { padding: 2.5rem 1.8rem; }
             .review-card { padding: 2.5rem 1.5rem; }
             .review-card::before { left: 1rem; font-size: 4rem; }
@@ -879,12 +888,14 @@
 </head>
 <body>
 
+    <!-- Curtain Page Loader -->
     <div class="loader" id="loader">
         <img src="https://raw.githubusercontent.com/agelmet/DIMITRA/refs/heads/main/IMG_3925.jpg" alt="Σμαράγδα Δημητρά Logo" class="loader-logo">
         <div class="loader-text">ΣΜΑΡΑΓΔΑ ΔΗΜΗΤΡΑ</div>
         <div class="loader-subtitle">Συνθετική Ψυχοθεραπεία & Δικαστική Ψυχολογία</div>
     </div>
 
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="container nav-inner">
             <a href="#" class="logo">
@@ -903,14 +914,17 @@
         </div>
     </nav>
 
+    <!-- Pure Textless Cinematic Hero -->
     <section class="hero" id="home">
         <div class="hero-bg" id="hero-parallax"></div>
         
+        <!-- Mobile Specific CTA -->
         <div class="hero-cta-wrapper reveal delay-3">
             <a href="https://calendar.app.google/ZXyDar41cXATeYeC8" target="_blank" class="btn"><span>Κλειστε Ραντεβου</span></a>
         </div>
     </section>
 
+    <!-- Marquee Info Strip -->
     <div class="marquee">
         <div class="marquee-inner">
             <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
@@ -918,6 +932,7 @@
             <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
             <span>ΣΥΝΘΕΤΙΚΗ ΨΥΧΟΘΕΡΑΠΕΙΑ</span><span>•</span>
             <span>ΔΙΚΑΣΤΙΚΗ ΨΥΧΟΛΟΓΙΑ</span><span>•</span>
+            <!-- Duplicated loop sequence -->
             <span>ΕΝΣΥΝΑΙΣΘΗΣΗ</span><span>•</span>
             <span>ΑΝΤΙΚΕΙΜΕΝΙΚΟΤΗΤΑ</span><span>•</span>
             <span>ΕΠΙΣΤΗΜΟΝΙΚΗ ΕΓΚΥΡΟΤΗΤΑ</span><span>•</span>
@@ -926,6 +941,7 @@
         </div>
     </div>
 
+    <!-- About / Profile Section with Dynamic CSS Grid Reordering -->
     <section class="section" id="about">
         <div class="container about-grid">
             
@@ -950,6 +966,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
             <div class="text-center reveal">
@@ -958,6 +975,7 @@
             </div>
             
             <div class="services-grid">
+                <!-- Therapy Block -->
                 <div class="service-card reveal reveal-scale">
                     <h3>Ψυχοθεραπεία & Συμβουλευτική</h3>
                     <p>Ο στόχος της θεραπείας είναι να δημιουργήσουμε έναν ασφαλή «χώρο» για εσάς. Είτε πρόκειται για ατομική ψυχοθεραπεία (Προσωποκεντρική/Συστημική), είτε για θεραπεία ζεύγους και συμβουλευτική γονέων, η προσέγγισή μου εστιάζει στην αποδοχή, την κατανόηση των οικογενειακών δυναμικών και την ενδυνάμωση. Οι συνεδρίες προσφέρονται τόσο δια ζώσης στο Μαρούσι (δίπλα στον σταθμό ΗΣΑΠ) όσο και μέσω διαδικτύου, διασφαλίζοντας την ίδια ποιότητα και εχεμύθεια.</p>
@@ -971,6 +989,7 @@
                     </div>
                 </div>
 
+                <!-- Forensic Block -->
                 <div class="service-card reveal reveal-scale delay-1">
                     <h3>Δικαστική Ψυχολογία &<br>Πραγματογνωμοσύνες</h3>
                     <p>Ως μέλος της Ελληνικής Ψυχιατροδικαστικής Εταιρείας και με πολυετή θητεία ως πραγματογνώμονας στις Εισαγγελικές αρχές, αναλαμβάνω τη σύνταξη δικαστικών πραγματογνωμοσυνών και τη συμβουλευτική σε νομικά θέματα που απαιτούν εξειδικευμένη ψυχολογική εκτίμηση. Η υπηρεσία αυτή διέπεται από απόλυτη αντικειμενικότητα, αυστηρή τήρηση των νομικών πλαισίων και επιστημονική τεκμηρίωση για κάθε υπόθεση που χρήζει δικαστικής παρέμβασης.</p>
@@ -985,6 +1004,7 @@
         </div>
     </section>
 
+    <!-- Philosophy / Approach Section -->
     <section class="section philosophy" id="philosophy">
         <div class="container">
             <div class="text-center reveal">
@@ -1009,6 +1029,7 @@
         </div>
     </section>
 
+    <!-- Space Gallery Strip -->
     <section class="section" style="padding-top: clamp(4rem, 10vw, 8rem);">
         <div class="container reveal">
             <h2 style="margin-bottom: 1rem; font-size: 1.8rem;">Ο Χώρος</h2>
@@ -1024,6 +1045,7 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
     <section class="section reviews" id="reviews">
         <div class="container reveal">
             <h2 style="font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 0.5rem;">Εμπειρίες Θεραπευόμενων</h2>
@@ -1073,6 +1095,7 @@
         </div>
     </section>
 
+    <!-- Contact & Maps Section -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-grid">
@@ -1095,6 +1118,7 @@
                     </div>
                 </div>
                 
+                <!-- Live Functional Google Maps Embed -->
                 <div class="reveal delay-1">
                     <div class="map-wrapper">
                         <iframe 
@@ -1114,6 +1138,7 @@
         </div>
     </section>
 
+    <!-- Core Interactive Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
