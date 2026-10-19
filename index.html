@@ -1645,7 +1645,7 @@ footer .dm-fl{display:flex;align-items:center;gap:.8rem}
         } else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c);
       });
     })(el);
-    if (!/^H\d$/.test(el.tagName)) { el.removeAttribute('aria-label'); var sr = d.createElement('span'); sr.className = 'sr'; sr.textContent = el.getAttribute('data-t') || ''; if (sr.textContent) el.appendChild(sr); }
+    if (!/^H\d$/.test(el.tagName)) { el.removeAttribute('aria-label'); $$('.w', el).forEach(function (w) { w.removeAttribute('aria-hidden'); }); }
     var mid = (all.length - 1) / 2;
     all.forEach(function (s, k) { s.style.setProperty('--d', (k - mid).toFixed(1)); s.style.setProperty('--a', Math.abs(k - mid).toFixed(1)); });
   }
