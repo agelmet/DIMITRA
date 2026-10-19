@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "IMG_3925.jpg"
+ },
+ "source_md5": "4d93890d83cd35b4283a0717f349dde1",
+ "version": "8fc0dba7",
+ "tile": "#ffffff",
+ "crop": "0.33,0.02,0.67,0.98",
+ "header": [
+  "file",
+  "IMG_3925.jpg",
+  "4d93890d83cd35b4283a0717f349dde1"
+ ],
+ "made": "2026-10-19"
+}
