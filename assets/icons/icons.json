@@ -1,16 +1,16 @@
 {
  "source": {
   "kind": "file",
-  "ref": "assets/img/smaragda-dimitra-psychologos-logo.webp"
+  "ref": "assets/img/smaragda-dimitra-psychologos-logo.svg"
  },
- "source_md5": "09bff99bd1cd910804761acd042007cf",
- "version": "8b947e47",
- "tile": "#ffffff",
+ "source_md5": "bf1ee9090c62f1c5e366c031cdf045d5",
+ "version": "0927ab38",
+ "tile": "#6D929A",
  "crop": null,
  "header": [
   "file",
-  "assets/img/smaragda-dimitra-psychologos-logo.webp",
-  "09bff99bd1cd910804761acd042007cf"
+  "assets/img/smaragda-dimitra-psychologos-logo.svg",
+  "bf1ee9090c62f1c5e366c031cdf045d5"
  ],
- "made": "2026-10-19"
+ "made": "2026-10-21"
 }
