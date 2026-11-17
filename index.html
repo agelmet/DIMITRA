@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="msvalidate.01" content="B111344056B4F7484DEA53457F44A3C3">
 <script id="advon-draft-guard">/* Advon: drafts stay out of Google; the real domain is untouched */(function(h){if(/(^|\.)(drafts\.advonmedia\.com|github\.io|netlify\.app)$/.test(h)){var m=document.createElement("meta");m.name="robots";m.content="noindex,nofollow";document.head.appendChild(m)}})(location.hostname)</script>
 <link rel="canonical" href="https://smaragdadimitra.gr/">
 <meta property="og:url" content="https://smaragdadimitra.gr/">
@@ -1646,6 +1647,26 @@ html.js .dm-pol.in .dm-tess{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.advon-ck{animation:none}}
 </style>
 <style id="advon-lang-css">html[lang^="en"] .adv-l-el,html:not([lang^="en"]) .adv-l-en{display:none}</style>
+<style id="r4-mhero">
+/* round 4 (17 Nov 2026): on phones/tablets the photo with her sign is shown WHOLE — natural ratio, no crop, no zoom */
+@media (max-width:1100px){
+  .hero.dm-hero{padding-top:84px;background:var(--slate)}
+  .dm-hph{height:auto;min-height:0;max-width:820px;width:100%;margin:0 auto;border-radius:0;box-shadow:none;overflow:visible;background:transparent}
+  .dm-hph .dm-kb{position:relative;display:block;inset:auto;aspect-ratio:1600/1270;overflow:hidden;animation:none}
+  .dm-hph img{transform:none!important;object-fit:cover;object-position:50% 50%;will-change:auto}
+  .dm-hph::before{display:none}
+  .dm-hin .dm-badge{position:relative;right:auto;bottom:auto;display:inline-flex;margin:0 0 1.5rem;animation:none;box-shadow:0 10px 26px -14px rgba(11,65,76,.55)}
+  .dm-hp{margin-top:0;border-radius:0;box-shadow:none;padding-top:1.9rem}
+}
+@media (min-width:769px) and (max-width:1100px){
+  .hero.dm-hero{padding-top:112px}
+}
+@media (min-width:821px) and (max-width:1100px){
+  .dm-hph .dm-kb{border-radius:22px;box-shadow:var(--sh-2)}
+  .dm-hp{padding-left:max(1.5rem,calc((100vw - 820px) / 2));padding-right:max(1.5rem,calc((100vw - 820px) / 2))}
+}
+</style>
+<script type="application/ld+json" id="advon-webpage">{"@context":"https://schema.org","@type":"WebPage","@id":"https://smaragdadimitra.gr/#webpage","url":"https://smaragdadimitra.gr/","name":"Σμαράγδα Δημητρά | Δικαστική Ψυχολόγος - Οικογενειακή Σύμβουλος","inLanguage":"el","dateModified":"2026-11-17","description":"Η Σμαράγδα Δημητρά είναι ψυχολόγος, συστημική και προσωποκεντρική θεραπεύτρια, με άδεια ασκήσεως επαγγέλματος. Πολυετής εμπειρία στην ψυχοθεραπεία και τη δικαστική ψυχολογία.","isPartOf":{"@id":"https://smaragdadimitra.gr/#website"},"about":{"@id":"https://smaragdadimitra.gr/#practice"}}</script>
 </head>
 <body id="top">
 
@@ -2461,6 +2482,11 @@ html.js .dm-pol.in .dm-tess{opacity:1;transform:none}
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+</script>
+<script id="r4-mhero-js">
+(function(){var b=document.querySelector('.dm-badge'),f=document.querySelector('.dm-hph'),h=document.querySelector('.dm-hin');if(!b||!f||!h||!window.matchMedia)return;
+var m=matchMedia('(max-width:1100px)');function put(){if(m.matches){if(b.parentNode!==h)h.insertBefore(b,h.firstChild)}else if(b.parentNode!==f)f.appendChild(b)}
+put();m.addEventListener?m.addEventListener('change',put):m.addListener(put)})();
 </script>
 </body>
 </html>
